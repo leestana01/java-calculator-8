@@ -19,4 +19,10 @@ class StringCalculatorTest {
         assertThat(calculator.calculate("1")).isEqualTo(1);
         assertThat(calculator.calculate("5")).isEqualTo(5);
     }
+
+    @Test
+    void 쉼표_구분자로_두_숫자_입력시_합_반환() {
+        StringCalculator calculator = new StringCalculator();
+        assertThat(calculator.calculate("1,2")).isEqualTo(3);
+    }
 }
