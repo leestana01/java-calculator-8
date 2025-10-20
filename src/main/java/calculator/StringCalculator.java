@@ -12,9 +12,18 @@ public class StringCalculator {
 
         if (input.startsWith("//")) {
             int delimiterEndIndex = input.indexOf("\n");
-            String customDelimiter = input.substring(2, delimiterEndIndex);
-            delimiter = escapeRegex(customDelimiter);
-            numbersString = input.substring(delimiterEndIndex + 1);
+            if (delimiterEndIndex == -1) {
+                delimiterEndIndex = input.indexOf("\\n");
+                if (delimiterEndIndex != -1) {
+                    String customDelimiter = input.substring(2, delimiterEndIndex);
+                    delimiter = escapeRegex(customDelimiter);
+                    numbersString = input.substring(delimiterEndIndex + 2);
+                }
+            } else {
+                String customDelimiter = input.substring(2, delimiterEndIndex);
+                delimiter = escapeRegex(customDelimiter);
+                numbersString = input.substring(delimiterEndIndex + 1);
+            }
         }
 
         String[] numbers = numbersString.split(delimiter);

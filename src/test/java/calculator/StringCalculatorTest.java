@@ -40,6 +40,7 @@ class StringCalculatorTest {
         StringCalculator calculator = new StringCalculator();
         assertThat(calculator.calculate("//;\n1;2;3")).isEqualTo(6);
         assertThat(calculator.calculate("//|\n1|2|3")).isEqualTo(6);
+        assertThat(calculator.calculate("//;\n1")).isEqualTo(1);
     }
 
     @Test
