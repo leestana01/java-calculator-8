@@ -25,4 +25,12 @@ class StringCalculatorTest {
         StringCalculator calculator = new StringCalculator();
         assertThat(calculator.calculate("1,2")).isEqualTo(3);
     }
+
+    @Test
+    void 쉼표_또는_콜론_구분자로_여러_숫자_입력시_합_반환() {
+        StringCalculator calculator = new StringCalculator();
+        assertThat(calculator.calculate("1,2,3")).isEqualTo(6);
+        assertThat(calculator.calculate("1:2:3")).isEqualTo(6);
+        assertThat(calculator.calculate("1,2:3")).isEqualTo(6);
+    }
 }
