@@ -33,4 +33,11 @@ class StringCalculatorTest {
         assertThat(calculator.calculate("1:2:3")).isEqualTo(6);
         assertThat(calculator.calculate("1,2:3")).isEqualTo(6);
     }
+
+    @Test
+    void 커스텀_구분자_사용() {
+        StringCalculator calculator = new StringCalculator();
+        assertThat(calculator.calculate("//;\n1;2;3")).isEqualTo(6);
+        assertThat(calculator.calculate("//|\n1|2|3")).isEqualTo(6);
+    }
 }

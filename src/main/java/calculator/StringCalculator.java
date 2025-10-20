@@ -7,8 +7,22 @@ public class StringCalculator {
             return 0;
         }
 
-        String[] numbers = input.split("[,:]");
+        String delimiter = "[,:]";
+        String numbersString = input;
+
+        if (input.startsWith("//")) {
+            int delimiterEndIndex = input.indexOf("\n");
+            String customDelimiter = input.substring(2, delimiterEndIndex);
+            delimiter = escapeRegex(customDelimiter);
+            numbersString = input.substring(delimiterEndIndex + 1);
+        }
+
+        String[] numbers = numbersString.split(delimiter);
         return sum(numbers);
+    }
+
+    private String escapeRegex(String delimiter) {
+        return delimiter.replaceAll("[\\[\\]{}()*+?.\\\\^$|]", "\\\\$0");
     }
 
     private int sum(String[] numbers) {
