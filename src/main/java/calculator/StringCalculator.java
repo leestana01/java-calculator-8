@@ -28,7 +28,11 @@ public class StringCalculator {
     private int sum(String[] numbers) {
         int total = 0;
         for (String number : numbers) {
-            total += Integer.parseInt(number);
+            int value = Integer.parseInt(number);
+            if (value < 0) {
+                throw new IllegalArgumentException();
+            }
+            total += value;
         }
         return total;
     }

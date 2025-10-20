@@ -3,6 +3,7 @@ package calculator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class StringCalculatorTest {
 
@@ -39,5 +40,12 @@ class StringCalculatorTest {
         StringCalculator calculator = new StringCalculator();
         assertThat(calculator.calculate("//;\n1;2;3")).isEqualTo(6);
         assertThat(calculator.calculate("//|\n1|2|3")).isEqualTo(6);
+    }
+
+    @Test
+    void 음수_입력시_예외_발생() {
+        StringCalculator calculator = new StringCalculator();
+        assertThatThrownBy(() -> calculator.calculate("-1,2,3"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
